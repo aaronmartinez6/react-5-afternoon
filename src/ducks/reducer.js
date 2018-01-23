@@ -1,4 +1,4 @@
-function reducer(){
+function reducer() {
 
 }
 
