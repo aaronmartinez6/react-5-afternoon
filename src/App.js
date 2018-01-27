@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 import router from './router'
+import { connect } from 'react-redux'
 
 
 class App extends Component {
-  constructor(){
+  constructor() {
     super()
     this.state = {
       //first view
@@ -66,87 +67,93 @@ class App extends Component {
     this.handleChangeLastName = this.handleChangeLastName.bind(this);
     this.handleChangeEmail = this.handleChangeEmail.bind(this);
   }
-    //first view
-    handleChangeLoanType(event) {
-        this.setState({loanType : event.target.value});
-    }
-    handleChangePropertyType(event) {
-        this.setState({propertyType : event.target.value});
-    }
-    //second view
-    handleChangeCity(event){
-        this.setState({city : event.target.value});
-    }
-    //third view
-    handleChangePropertyToBeUsedOn(event){
-        this.setState({propToBeUsedOn : event.target.value})
-    }
-    //fourth view
-    handleChangeFoundTrue(event){
-        this.setState({found : "true"});
-    }
-    handleChangeFoundFalse(event){
-        this.setState({found : "false"});
-    }
-    //fifth view
-    handleChangeRealEstateAgentTrue(){
-        this.setState({realEstateAgent : "true"});
-    }
-    handleChangeRealEstateAgentFalse(){
-        this.setState({realEstateAgent : "false"});
-    }
-    //sixth view
-    handleChangeUpdateDownPayment(event){
-        this.setState({downPayment : event.target.value})
-    }
-    handleChangeUpdateCost(event){
-      this.setState({cost: event.target.value});
-    }
-    //seventh view
-    handleChangeCreditE(){
-      this.setState({credit: 'Excellent'})
-    }
-    handleChangeCreditG(){
-      this.setState({credit: 'Good'})
-    }
-    handleChangeCreditF(){
-      this.setState({credit: 'Fair'})
-    }
-    handleChangeCreditP(){
-      this.setState({credit: 'Poor'})
-    }
-    //eigth view
-    handleChangeUpdateHistory(event){
-      this.setState({history: event.target.value})
-    }
-    //ninth view
-    handleChangeAddressOne(event){
-      this.setState({addressOne: event.target.value})
-    }
-    handleChangeAddressTwo(event){
-      this.setState({addressTwo: event.target.value})
-    }
-    handleChangeAddressThree(event){
-      this.setState({addressThree: event.target.value})
-    }
-    //tenth view
-    handleChangeFirstName(event){
-      this.setState({firstName : event.target.value})
-    }
-    handleChangeLastName(event){
-      this.setState({lastName: event.target.value})
-    }
-    handleChangeEmail(event){
-      this.setState({email: event.target.value})
-    }
+  //first view
+  handleChangeLoanType(event) {
+    this.setState({ loanType: event.target.value });
+  }
+  handleChangePropertyType(event) {
+    this.setState({ propertyType: event.target.value });
+  }
+  //second view
+  handleChangeCity(event) {
+    this.setState({ city: event.target.value });
+  }
+  //third view
+  handleChangePropertyToBeUsedOn(event) {
+    this.setState({ propToBeUsedOn: event.target.value })
+  }
+  //fourth view
+  handleChangeFoundTrue(event) {
+    this.setState({ found: "true" });
+  }
+  handleChangeFoundFalse(event) {
+    this.setState({ found: "false" });
+  }
+  //fifth view
+  handleChangeRealEstateAgentTrue() {
+    this.setState({ realEstateAgent: "true" });
+  }
+  handleChangeRealEstateAgentFalse() {
+    this.setState({ realEstateAgent: "false" });
+  }
+  //sixth view
+  handleChangeUpdateDownPayment(event) {
+    this.setState({ downPayment: event.target.value })
+  }
+  handleChangeUpdateCost(event) {
+    this.setState({ cost: event.target.value });
+  }
+  //seventh view
+  handleChangeCreditE() {
+    this.setState({ credit: 'Excellent' })
+  }
+  handleChangeCreditG() {
+    this.setState({ credit: 'Good' })
+  }
+  handleChangeCreditF() {
+    this.setState({ credit: 'Fair' })
+  }
+  handleChangeCreditP() {
+    this.setState({ credit: 'Poor' })
+  }
+  //eigth view
+  handleChangeUpdateHistory(event) {
+    this.setState({ history: event.target.value })
+  }
+  //ninth view
+  handleChangeAddressOne(event) {
+    this.setState({ addressOne: event.target.value })
+  }
+  handleChangeAddressTwo(event) {
+    this.setState({ addressTwo: event.target.value })
+  }
+  handleChangeAddressThree(event) {
+    this.setState({ addressThree: event.target.value })
+  }
+  //tenth view
+  handleChangeFirstName(event) {
+    this.setState({ firstName: event.target.value })
+  }
+  handleChangeLastName(event) {
+    this.setState({ lastName: event.target.value })
+  }
+  handleChangeEmail(event) {
+    this.setState({ email: event.target.value })
+  }
 
   render() {
     return (
       <div>
-        { router }
+        {router}
       </div>
     );
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    state
+  };
+}
+
+export default connect(mapStateToProps)(App);

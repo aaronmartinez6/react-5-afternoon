@@ -1,23 +1,28 @@
-import React,  { Component } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux'
+import { updateDownPayment, updateCost } from './../../ducks/reducer';
 
 class WizardSix extends Component {
 
-    render(){
-        return(
+    render() {
+
+        const { updateCost, updateDownPayment } = this.props;
+        return (
             <div className="parent-div">
-                    <div className="vert-align">                    <p>What is the estimated purchase price?</p> <br />
-                        
-                        
-                        <input type="text" placeholder="amount" onChange={this.props.updateCost}/> <br />
+                <div className="vert-align">
+                    <p>What is the estimated purchase price?</p> <br />
+
+
+                    <input type="text" placeholder="amount" onChange={(event) => updateCost(event.target.value)} /> <br />
 
 
                     <p>How much are you putting down as a down payment?</p> <br />
-                        
-                        
-                        <input type="text" placeholder="amount" onChange={this.props.updateDownPayment}/>                    
-                        
-                    
+
+
+                    <input type="text" placeholder="amount" onChange={(event) => updateDownPayment(event.target.value)} />
+
+
                     <Link to="/wSeven"><button className="margin-btn"> Next </button></Link>
                 </div>
             </div>
@@ -25,4 +30,12 @@ class WizardSix extends Component {
     }
 }
 
-export default WizardSix;
+function mapStateToProps(state) {
+    const { cost, downPayment } = state
+    return {
+        cost,
+        downPayment
+    }
+}
+
+export default connect(mapStateToProps, { updateDownPayment, updateCost })(WizardSix);
